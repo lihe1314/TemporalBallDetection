@@ -130,7 +130,9 @@ def eval_data2(testloader):
     dir_check(opt.save_out)
     dir_check(os.path.join(opt.save_out, opt.seq_model))
     model.eval()
-    model = model.cuda()
+    # model = model.cuda()
+    model = model.to("cpu")
+        
     if opt.seq_model == 'lstm':
         lstm.test(testloader, model, out=True)
     if opt.seq_model == 'tcn':

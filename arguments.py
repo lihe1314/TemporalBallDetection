@@ -9,6 +9,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--dataset', required=False, help='provided | multi | new_sweaty | new_seq', default='provided')
 # parser.add_argument('--data_root', required=False, help='root if the new data', default='testDataset')
 parser.add_argument('--data_root', required=False, help='root if the new data', default='../SoccerData1')
+
 # parser.add_argument('--xml', required=False, help='test xml path', default=None)
 
 ###########################################
@@ -84,7 +85,7 @@ parser.add_argument('--save_out', default='seq_output',
 
 ###########################################
 # additional
-parser.add_argument('--device', default='cuda')
+parser.add_argument('--device', default='cpu')
 parser.add_argument('--suffix', default='tcn.save')
 parser.add_argument('--seq_predict', default=1, type=int)
 parser.add_argument('--seq_model', default='tcn', help='lstm | tcn | gru')

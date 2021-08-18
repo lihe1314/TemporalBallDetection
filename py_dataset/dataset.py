@@ -20,11 +20,13 @@ class SoccerDataSet:
         self.transform = transform
 
         with h5py.File(self.dataroot + '/' + self.map_file,'r') as hf:
-            targets = hf['prob_maps'].value
+
+            # print(list(hf['filenames']))
+            targets = hf['prob_maps']
             targets = np.array(targets).astype('float32')
-            self.filenames = list(hf['filenames'].value)
-            self.min_radius = hf['min_radius'].value
-            centers = list(hf['centers'].value)
+            self.filenames = list(hf['filenames'])
+            self.min_radius = hf['min_radius']
+            centers = list(hf['centers'])
 
         if opt.dataset == 'multi':
             centers1 = {}

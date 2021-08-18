@@ -93,17 +93,43 @@ class JoinedModel(nn.Module):
         return x
 
     def resume_sweaty(self, path):
-        checkpoint = torch.load(path)
+
+        if opt.device == 'cpu':
+            print('Loading CPU weights...')
+            checkpoint = torch.load(path, map_location=lambda storage, loc: storage)
+        else:
+            print('Loading GPU weights...')
+            checkpoint = torch.load(path)
+
+
+        # checkpoint = torch.load(path)
+
         checkpoint = checkpoint['state_dict_model']
         self.sweaty.load_state_dict(checkpoint)
 
     def resume_seq(self, path):
-        checkpoint = torch.load(path)
+        # checkpoint = torch.load(path)
+        if opt.device == 'cpu':
+            print('Loading CPU weights...')
+            checkpoint = torch.load(path, map_location=lambda storage, loc: storage)
+        else:
+            print('Loading GPU weights...')
+            checkpoint = torch.load(path)
+
         checkpoint = checkpoint['state_dict']
         self.seq.load_state_dict(checkpoint)
 
     def resume_both(self, path):
-        checkpoint = torch.load(path)
+
+        # checkpoint = torch.load(path)
+        
+        if opt.device == 'cpu':
+            print('Loading CPU weights...')
+            checkpoint = torch.load(path, map_location=lambda storage, loc: storage)
+        else:
+            print('Loading GPU weights...')
+            checkpoint = torch.load(path)
+
         checkpoint = checkpoint['state_dict_model']
         self.load_state_dict(checkpoint)
 

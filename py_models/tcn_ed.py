@@ -121,7 +121,7 @@ def test(dataloader, model, out=False):
             target = target.float().numpy().squeeze()
             if opt.device == 'cuda':
                 data = data.cuda(non_blocking=True)
-
+            print("#")
             start = time.time()
             output = model(data).to('cpu').numpy().squeeze()
             end = time.time()

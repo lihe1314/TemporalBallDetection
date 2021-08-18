@@ -1,0 +1,7 @@
+logs/*
+seq_output/*
+SoccerDataSeq/*
+*/__pycache__/*
+__pycache__/*
+SoccerData1/test_cnn/test_maps
+SoccerData1/train_cnn/train_maps

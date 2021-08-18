@@ -89,7 +89,7 @@ def post_processing(maps, threshold):
     processed_maps, predicted_centers, maps_area = [], [], []
     for map_ in maps:
         binary_map = (map_>0.1).astype(np.uint8)
-        contours = cv2.findContours(binary_map, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)[1]
+        contours = cv2.findContours(binary_map, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)[0]
         img = np.zeros(map_.shape, np.uint8)
         if len(contours)>0:
             contour_sizes = [(cv2.contourArea(contour), contour) for contour in contours]
